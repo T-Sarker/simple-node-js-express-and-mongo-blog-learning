@@ -1,0 +1,38 @@
+<%- include('inc/header') %>
+<%- include('inc/nav') %>
+
+
+
+<div class="maindiv">
+  <div class="container">
+    <h1 class="slide-texth1">Who Am I?</h1>
+    <p class="slide-textp">Note that the root route is now set to your public dir,</p>
+
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-10">
+      <div class="blogList mt-6">
+        <h2 class="mb-5">Latest Blogs</h2>
+        <%- include('./inc/bloglist') %>  
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-4 col-lg-2">
+      <h3 class="mjb-5">Sidebar</h3>
+
+      <hr>
+
+      <div class="sideCategory">
+        <%- include('./inc/sidebar') %> 
+      </div>
+    </div>
+
+  </div>
+  
+</div>
+
+</div>

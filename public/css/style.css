@@ -1,0 +1,47 @@
+.maindiv{
+    background-image: url('https://d585tldpucybw.cloudfront.net/sfimages/default-source/labs/kendo/2020-revamp/overview-bg.jpg?v=2');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-width: fit-content;
+    min-height: 80vh;
+    color: #fff;
+}
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+    color: #1abc9c !important;
+  }
+
+
+.slide-texth1{
+    font-family: inherit;
+    font-size: 100pt;
+    margin-bottom: 20px; 
+    position: relative;    
+    margin-top: 10%;
+}
+
+.slide-textp{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+h1.slide-texth1:after {
+    content: "";
+    width: 123px;
+    height: 2px;
+    margin: 0;
+    background: white;
+    position: absolute;
+    left: 0;
+    top: 40;
+    bottom: 0;
+}

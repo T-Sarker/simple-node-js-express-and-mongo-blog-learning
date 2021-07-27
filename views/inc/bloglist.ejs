@@ -1,0 +1,23 @@
+<div class="blogListWeaper mt-5">
+  <% blogs.forEach(blog => { 
+    let st = blog.date
+    let dt = st.toDateString()
+    %>
+  <div class="card mb-3" style="margin-top: 10px;margin-bottom:15px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          src="https://www.tubics.com/wp-content/uploads/2018/10/Choose-the-Right-Video-Thumbnail-Size-1-1-1024x576.png"
+          class="img-fluid rounded-start" alt="..." style="width:100%">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= blog.title %> </h5>
+          <p class="card-text">T<%= blog.details.slice(0,100) %> </p>
+          <p class="card-text"><small class="text-muted">Last updated:  <em> <%= dt %> </em> </small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+</div>
