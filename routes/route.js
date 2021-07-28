@@ -1,14 +1,12 @@
 const express = require('express')
 // const blogAdd = require('../server/models/blogadd')
 const controller = require('../server/controller/blogController')
+const blogAdd = require('../server/models/blogadd')
 
 const router = express.Router()
 
-router.get('/dataentry', (req, res) => {
-    res.render('dataentry', {
-        message: null
-    })
-})
+router.get('/dataentry', controller.dataentry)
+
 //**this is here to show ow to insert data from route page just a reference */
 // router.post("/dataentry", async (req, res) => {
 //     // res.send(req.body)
@@ -38,5 +36,9 @@ router.get('/dataentry', (req, res) => {
 // })
 
 router.post('/dataentry',controller.addBlogC)
+
+//**creating sigle blog route  */
+
+router.get('/blog/:id', controller.detailsBlog)
 
 module.exports = router

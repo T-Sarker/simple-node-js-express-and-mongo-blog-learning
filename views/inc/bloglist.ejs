@@ -1,4 +1,5 @@
 <div class="blogListWeaper mt-5">
+  <% blogs.reverse() %> 
   <% blogs.forEach(blog => { 
     let st = blog.date
     let dt = st.toDateString()
@@ -12,9 +13,10 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
+          <p class="card-text"><small class="text-muted">Last updated:  <em> <%= dt %> </em> </small></p>
           <h5 class="card-title"><%= blog.title %> </h5>
           <p class="card-text">T<%= blog.details.slice(0,100) %> </p>
-          <p class="card-text"><small class="text-muted">Last updated:  <em> <%= dt %> </em> </small></p>
+          <a href="/blog/<%= blog._id.toString() %> " class="btn btn-info">Read More</a>
         </div>
       </div>
     </div>
