@@ -41,4 +41,11 @@ router.post('/dataentry',controller.addBlogC)
 
 router.get('/blog/:id', controller.detailsBlog)
 
+// creating the routes for blog update and delete
+
+router.get('/edit/:id',controller.editBlog)
+router.post('/edit',controller.updateBlog)
+
+router.get('/delete/:id',controller.deleteBlog)
+
 module.exports = router
