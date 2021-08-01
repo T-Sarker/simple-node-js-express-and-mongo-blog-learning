@@ -10,6 +10,9 @@ const blogSchema = new mongoose.Schema({
         type:String,
         default: "tapos"
     },
+    images:[{
+        type: String
+    }],
     details:{
         type: String,
         required: 'Please enter your Details',

@@ -1,6 +1,7 @@
 const blogAdd = require('../../server/models/blogadd')
 
 
+
 exports.dataentry = async (req, res) => {
     try {
         const AllBlogs = await blogAdd.find()
@@ -19,8 +20,6 @@ exports.dataentry = async (req, res) => {
 
 exports.addBlogC = async (req, res) => {
 
-    const AllBlogs = await blogAdd.find()
-
     if (req.body.title == '' || req.body.details == '') {
         
         return res.render('dataentry', {
@@ -28,39 +27,60 @@ exports.addBlogC = async (req, res) => {
                 type: 'error',
                 body: 'Fields must not be empty'
             },
-            Blogs: {
-                type: 'show',
-                body: AllBlogs
-            }
+            Blogs: null
         })
     }
 
+    console.log(req.files);
+
+    if (req.files.length > 0) {
+        images = req.files.map((file) => {
+          return file.filename
+        });
+      }
+
+    // images = req.files.originalname
+    console.log(images);
     try {
-        const addData = new blogAdd(req.body)
-        const result = await addData.save()
-        if (result) {
-            return res.render('dataentry', {
-                message: {
-                    type: 'success',
-                    body: 'Succesfull'
-                },
-                Blogs: {
-                    type: 'show',
-                    body: AllBlogs
-                }
-            })
-        } else {
-            return res.render('dataentry', {
-                message: {
-                    type: 'error',
-                    body: 'Failed'
-                },
-                Blogs: {
-                    type: 'show',
-                    body: AllBlogs
-                }
-            })
-        }
+        const AllBlogs = await blogAdd.find()
+        const addData = await blogAdd.create({
+            title:req.body.title, // String is shorthand for {type: String}
+            author:'tapos',
+            images:images,
+            details:req.body.details,
+            comments: [],
+            date: Date.now(),
+        })
+
+        return res.render('dataentry', {
+                    message: {
+                        type: 'success',
+                        body: 'Succesfull'
+                    },
+                    Blogs: {
+                        type: 'show',
+                        body: AllBlogs
+                    }
+                })
+
+        // const result = await addData.save()
+        // if (result) {
+        //     return res.render('dataentry', {
+        //         message: {
+        //             type: 'success',
+        //             body: 'Succesfull'
+        //         },
+        //         Blogs: null
+        //     })
+        // } else {
+        //     return res.render('dataentry', {
+        //         message: {
+        //             type: 'error',
+        //             body: 'Failed'
+        //         },
+        //         Blogs: null
+        //     })
+        // }
     } catch (error) {
         console.log(error);
     }
@@ -133,11 +153,11 @@ exports.updateBlog = async (req, res) => {
 
 exports.deleteBlog = async (req, res) => {
 
-    const AllBlogs = await blogAdd.find()
+    
     const id = req.params.id
     console.log(id);
     try {
-        const AllBlogs = await blogAdd.find()
+        
         await blogAdd.findByIdAndDelete(id, () => {
             return res.redirect('/dataentry')
         })

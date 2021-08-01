@@ -26,7 +26,13 @@
       </button>
     </div>
     <% } %>
-    <form action="/dataentry" method="post">
+    <form action="/dataentry" method="post" enctype="multipart/form-data">
+
+      <div class="input-group mb-3">
+        <!-- <label class="input-group-text" for="inputGroupFile01">Upload</label> -->
+        <input type="file" class="form-control" id="inputGroupFile01" name="images" multiple>
+      </div>
+      
       <div class="mb-3">
         <label for="title" class="form-label">Blog Title</label>
         <input type="text" class="form-control" name="title" id="title" placeholder="title here">
@@ -53,7 +59,7 @@
           <div class="row g-0">
             <div class="col-md-2">
               <img
-                src="https://www.tubics.com/wp-content/uploads/2018/10/Choose-the-Right-Video-Thumbnail-Size-1-1-1024x576.png"
+                src="\images\<%= blog.images[0] %>"
                 class="img-fluid rounded-start" alt="..." style="width:100%">
             </div>
             <div class="col-md-8">

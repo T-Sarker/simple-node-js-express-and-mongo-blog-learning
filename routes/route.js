@@ -2,6 +2,7 @@ const express = require('express')
 // const blogAdd = require('../server/models/blogadd')
 const controller = require('../server/controller/blogController')
 const blogAdd = require('../server/models/blogadd')
+const upload = require("../server/middlewares/multer")
 
 const router = express.Router()
 
@@ -35,7 +36,7 @@ router.get('/dataentry', controller.dataentry)
 //     }
 // })
 
-router.post('/dataentry',controller.addBlogC)
+router.post('/dataentry',upload.array('images'),controller.addBlogC)
 
 //**creating sigle blog route  */
 
